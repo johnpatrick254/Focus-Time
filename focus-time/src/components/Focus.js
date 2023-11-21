@@ -3,7 +3,7 @@ import { colors } from "../utils/colors"
 import { TextInput } from "react-native-paper"
 import { CustomButton } from "./button"
 import { spacing } from "../utils/fontsizes"
-export const FocusTime = ({focusItem,setFocusItem,setFocusItems}) => {
+export const FocusTime = ({focusItem,setFocusItem,setFocusItems,addFocusHistory}) => {
 
     return <>
         <View style={styles.container}>
@@ -22,6 +22,7 @@ export const FocusTime = ({focusItem,setFocusItem,setFocusItems}) => {
                     size={50}
                     onPress={() => {
                         setFocusItems(prev => ([...prev, focusItem]));
+                        addFocusHistory(prev=>([...prev,focusItem]))
                         setFocusItem('');
                     }}
                 />
@@ -32,7 +33,7 @@ export const FocusTime = ({focusItem,setFocusItem,setFocusItems}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 0.15,
     },
 
     inputContainer: {
