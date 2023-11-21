@@ -6,30 +6,38 @@ import { useState } from 'react';
 import { fontSizes } from './src/utils/fontsizes';
 import Timer from './src/components/timer';
 import { useKeepAwake } from 'expo-keep-awake';
+import FocusHistory from './src/components/FocusHistory';
 
 export default function App() {
   const [focusItem, setFocusItem] = useState("")
-  const [focusItems, setFocusItems] = useState("")
+  const [focusSubject, setFocusSubject] = useState('')
+  const [focusItems, setFocusItems] = useState([])
   useKeepAwake()
 
   return (
     <SafeAreaView style={styles.container}>
-     {(focusItems.length === 0) ? 
+     {(focusSubject.length === 0) ? 
+      <>
       <FocusTime
       focusItem={focusItem}
       setFocusItem={setFocusItem}
-      setFocusItems={setFocusItems}
+      setFocusItems={setFocusSubject}
+      addFocusHistory={setFocusItems}
       />
+      <FocusHistory
+    history={focusItems}
+    />
+      </>
       :
-
         <Timer  
-        focusSubject={focusItems}
+        focusSubject={focusSubject}
         onTimerEnd={()=>{}}
-        clearSubject={()=>{setFocusItems('')}}
+        clearSubject={()=>{setFocusSubject('')}}
         />
          
       
     }
+    
       <StatusBar style="auto" />
     </SafeAreaView>
   );
