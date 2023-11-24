@@ -4,7 +4,7 @@ import { fontSizes, spacing } from '../utils/fontsizes';
  
  export default function FocusHistory({history}) {
     if(!history) return null;
-    const renderStructure = ({item})=><Text style={styles.item}>{item}</Text>
+    const renderStructure = ({item})=><Text style={styles.item}>-  {item}</Text>
    return (
      <View style={styles.container}>
         <Text style={styles.title}>Focus history</Text>
@@ -21,6 +21,7 @@ import { fontSizes, spacing } from '../utils/fontsizes';
  const styles= StyleSheet.create({
     container:{
         padding:spacing.lg,
+        paddingTop:spacing.xxl,
         flex:1
     },
     title:{
@@ -31,6 +32,7 @@ import { fontSizes, spacing } from '../utils/fontsizes';
     item:{
         color:"white",
         fontSize:fontSizes.md,
+        paddingTop:fontSizes.md
        
     }
  })
